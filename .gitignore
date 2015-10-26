@@ -1,0 +1,17 @@
+*.autofetch
+*.sql
+*.orig
+.classpath
+.project
+.settings/
+target/
+logs/
+log/
+ebean-autotune.xml
+ebean-profiling*.xml
+
+# Intellij project files
+*.iml
+*.ipr
+*.iws
+.idea/

@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.AbstractEnvironment;
 import org.springframework.core.env.Environment;
+import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
-import org.springframework.core.env.PropertiesPropertySource;
 import org.springframework.core.env.PropertySource;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -21,21 +23,17 @@ import java.util.Properties;
 @Component
 public class EbeanFactoryBean implements FactoryBean<EbeanServer>, EnvironmentAware {
 
-//  /**
-//   * Default to local in memory database.
-//   */
-//  String profileName = "local";
-
   @Autowired
   CurrentUser currentUser;
 
-  public EbeanFactoryBean() {
-  }
-
   /**
-   * Properties used to configure EbeanServer instance.
+   * Properties used to configure EbeanServer instance
+   * (loaded from spring boot application properties).
    */
   Properties properties = new Properties();
+
+  public EbeanFactoryBean() {
+  }
 
   @Override
   public EbeanServer getObject() throws Exception {
@@ -44,7 +42,13 @@ public class EbeanFactoryBean implements FactoryBean<EbeanServer>, EnvironmentAw
     config.setName("db");
     config.setCurrentUserProvider(currentUser);
     config.loadFromProperties(properties);
+
+    // load test-ebean.properties if present for running tests
+    // typically using H2 in memory database
     config.loadTestProperties();
+
+    // set as default and register so that Model can be
+    // used if desired for save() and update() etc
     config.setDefaultServer(true);
     config.setRegister(true);
 
@@ -64,38 +68,27 @@ public class EbeanFactoryBean implements FactoryBean<EbeanServer>, EnvironmentAw
   @Override
   public void setEnvironment(Environment environment) {
 
-    //determineActiveProfile(environment.getActiveProfiles());
-
     loadProperties((AbstractEnvironment) environment);
   }
 
-//  /**
-//   * Determine if this is dev, test or prod database configuration.
-//   */
-//  private void determineActiveProfile(String[] activeProfiles) {
-//
-//    for (String profile : activeProfiles) {
-//      if ("production".equalsIgnoreCase(profile)) {
-//        profileName = "prod";
-//
-//      } else if ("test".equalsIgnoreCase(profile)) {
-//        profileName = "test";
-//
-//      } else if ("development".equalsIgnoreCase(profile)) {
-//        profileName = "dev";
-//      }
-//    }
-//  }
 
   /**
    * Load into Properties (from Spring PropertySource implementations).
    */
   private void loadProperties(AbstractEnvironment environment) {
+
     MutablePropertySources propertySources = environment.getPropertySources();
+
+    // reverse the order of the property sources
+    List<MapPropertySource> props = new ArrayList<>();
     for (PropertySource propertySource :propertySources) {
-      if (propertySource instanceof PropertiesPropertySource) {//MapPropertySource
-        properties.putAll(((PropertiesPropertySource) propertySource).getSource());
+      if (propertySource instanceof MapPropertySource) {
+        props.add(0, (MapPropertySource) propertySource);
       }
+    }
+    // merge them into the single Properties
+    for (MapPropertySource propertySource : props) {
+      properties.putAll(propertySource.getSource());
     }
   }
 

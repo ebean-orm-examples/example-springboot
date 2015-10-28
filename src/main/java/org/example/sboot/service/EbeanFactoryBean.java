@@ -43,6 +43,10 @@ public class EbeanFactoryBean implements FactoryBean<EbeanServer>, EnvironmentAw
     config.setCurrentUserProvider(currentUser);
     config.loadFromProperties(properties);
 
+    // If entity beans are in a separate jar then name the
+    // jars that should be scanned using addJar()
+    //config.addJar("example-domain");
+
     // load test-ebean.properties if present for running tests
     // typically using H2 in memory database
     config.loadTestProperties();

@@ -3,6 +3,7 @@ package org.example.sboot.service;
 import com.avaje.ebean.EbeanServer;
 import org.example.sboot.Application;
 import org.example.sboot.domain.Content;
+import org.example.sboot.domain.query.QContent;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,10 @@ public class DbInsertUpdateTest {
 
     content.setName("moo");
     content.save();
+
+    new QContent()
+        .name.istartsWith("interested")
+        .version.greaterOrEqualTo(1L)
+        .findList();
   }
 }

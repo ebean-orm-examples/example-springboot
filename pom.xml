@@ -35,7 +35,20 @@
     <dependency>
       <groupId>org.avaje.ebeanorm</groupId>
       <artifactId>avaje-ebeanorm</artifactId>
-      <version>6.10.1</version>
+      <version>6.13.5</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.avaje.ebeanorm</groupId>
+      <artifactId>querybean-generator</artifactId>
+      <version>2.1.1</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.avaje.ebeanorm</groupId>
+      <artifactId>avaje-ebeanorm-querybean</artifactId>
+      <version>2.1.1</version>
     </dependency>
 
     <dependency>
@@ -79,6 +92,36 @@
             <configuration>
               <packages>org.example.sboot.domain.**</packages>
               <transformArgs>debug=2</transformArgs>
+            </configuration>
+            <goals>
+              <goal>enhance</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+
+      <plugin>
+        <groupId>org.avaje.ebeanorm</groupId>
+        <artifactId>querybean-maven-plugin</artifactId>
+        <version>2.1.1</version>
+        <executions>
+          <execution>
+            <id>main</id>
+            <phase>process-classes</phase>
+            <configuration>
+              <transformArgs>debug=1</transformArgs>
+            </configuration>
+            <goals>
+              <goal>enhance</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>test</id>
+            <phase>process-test-classes</phase>
+            <configuration>
+              <classSource>target/test-classes</classSource>
+              <transformArgs>debug=1</transformArgs>
             </configuration>
             <goals>
               <goal>enhance</goal>

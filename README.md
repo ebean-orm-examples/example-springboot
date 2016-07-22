@@ -7,7 +7,7 @@ Clone this repository to your local and boot it.
 ```console
 $ git clone git@github.com:ebean-orm-examples/example-springboot.git
 
-$ mv example-springboot
+$ cd example-springboot
 
 $ mvn spring-boot:run
 [INFO] Scanning for projects...

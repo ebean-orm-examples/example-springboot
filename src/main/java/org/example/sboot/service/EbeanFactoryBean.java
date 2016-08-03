@@ -20,8 +20,8 @@ public class EbeanFactoryBean implements FactoryBean<EbeanServer> {
   @Autowired
   CurrentUser currentUser;
   
-  @Autowired
-  DataSource dataSource;
+//  @Autowired
+//  DataSource dataSource;
   
   @Override
   public EbeanServer getObject() throws Exception {
@@ -30,9 +30,11 @@ public class EbeanFactoryBean implements FactoryBean<EbeanServer> {
     config.setName("db");
     config.setCurrentUserProvider(currentUser);
 
-    // set the spring's datasource and transaction manager.
-    config.setDataSource(dataSource);
-    config.setExternalTransactionManager(new SpringAwareJdbcTransactionManager());
+//    // set the spring's datasource and transaction manager.
+//    config.setDataSource(dataSource);
+//    config.setExternalTransactionManager(new SpringAwareJdbcTransactionManager());
+
+    config.loadFromProperties();
     
     // set as default and register so that Model can be
     // used if desired for save() and update() etc

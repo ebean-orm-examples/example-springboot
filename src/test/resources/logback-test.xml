@@ -55,15 +55,15 @@
     </encoder>
   </appender>
 
-  <logger name="org.avaje.ebean.ReadAuditQuery" level="TRACE" additivity="false">
+  <logger name="io.ebean.ReadAuditQuery" level="TRACE" additivity="false">
     <appender-ref ref="READAUDIT_QUERY_LOG"/>
   </logger>
 
-  <logger name="org.avaje.ebean.ReadAudit" level="TRACE" additivity="false">
+  <logger name="io.ebean.ReadAudit" level="TRACE" additivity="false">
     <appender-ref ref="READAUDIT_LOG"/>
   </logger>
 
-  <logger name="org.avaje.ebean.ChangeLog" level="TRACE" additivity="false">
+  <logger name="io.ebean.ChangeLog" level="TRACE" additivity="false">
     <appender-ref ref="CHANGE_LOG"/>
   </logger>
 
@@ -72,20 +72,20 @@
     <appender-ref ref="STDOUT"/>
   </root>
 
-  <logger name="com.avaje.ebeaninternal.server.autotune" level="TRACE"/>
+  <logger name="io.ebaninternal.server.autotune" level="TRACE"/>
 
-  <logger name="com.avaje.ebean" level="INFO"/>
-  <logger name="org.avaje.ebean" level="INFO"/>
-  <logger name="org.avaje.ebean.SQL" level="TRACE"/>
-  <logger name="org.avaje.ebean.TXN" level="TRACE"/>
-  <logger name="org.avaje.ebean.SUM" level="TRACE"/>
+  <logger name="io.eban" level="INFO"/>
+  <logger name="io.ebean" level="INFO"/>
+  <logger name="io.ebean.SQL" level="TRACE"/>
+  <logger name="io.ebean.TXN" level="TRACE"/>
+  <logger name="io.ebean.SUM" level="TRACE"/>
 
-  <logger name="org.avaje.ebean.cache.QUERY" level="TRACE"/>
-  <logger name="org.avaje.ebean.cache.BEAN" level="TRACE"/>
-  <logger name="org.avaje.ebean.cache.COLL" level="TRACE"/>
-  <logger name="org.avaje.ebean.cache.NATKEY" level="TRACE"/>
+  <logger name="io.ebean.cache.QUERY" level="TRACE"/>
+  <logger name="io.ebean.cache.BEAN" level="TRACE"/>
+  <logger name="io.ebean.cache.COLL" level="TRACE"/>
+  <logger name="io.ebean.cache.NATKEY" level="TRACE"/>
 
   <logger name="com.avaje.tests" level="DEBUG"/>
-  <logger name="com.avaje.ebean.config.dbplatform.H2HistoryTrigger" level="DEBUG"/>
+  <logger name="io.eban.config.dbplatform.H2HistoryTrigger" level="DEBUG"/>
 
 </configuration>

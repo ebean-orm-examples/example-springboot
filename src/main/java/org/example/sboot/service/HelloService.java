@@ -1,6 +1,6 @@
 package org.example.sboot.service;
 
-import com.avaje.ebean.EbeanServer;
+import io.ebean.EbeanServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

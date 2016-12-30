@@ -1,14 +1,13 @@
 package org.example.sboot.service;
 
-import io.ebean.EbeanServer;
-import io.ebean.annotation.Transactional;
+import com.avaje.ebean.EbeanServer;
+import com.avaje.ebean.annotation.Transactional;
 import org.example.sboot.domain.Content;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+//import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-//import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ContentService {

@@ -1,6 +1,6 @@
 package org.example.sboot.service;
 
-import io.ebean.EbeanServer;
+import com.avaje.ebean.EbeanServer;
 import org.example.sboot.domain.Content;
 import org.example.sboot.domain.query.QContent;
 import org.junit.Test;
@@ -16,25 +16,24 @@ import static org.junit.Assert.assertNotNull;
 @SpringBootTest
 public class DbInsertUpdateTest {
 
-    @Autowired
-    EbeanServer server;
+  @Autowired
+  EbeanServer server;
 
-    @Test
-    public void testInsertUpdate() throws Exception {
+  @Test
+  public void testInsertUpdate() throws Exception {
 
-        assertNotNull(server);
+    assertNotNull(server);
 
-        Content content = new Content();
-        content.setName("foo");
-        server.save(content);
+    Content content = new Content();
+    content.setName("foo");
+    server.save(content);
 
-        content.setName("moo");
-        content.save();
+    content.setName("moo");
+    content.save();
 
-        new QContent()
-                .name.istartsWith("interested")
-                .version.greaterOrEqualTo(1L)
-                .findList();
-
-    }
+    new QContent()
+        .name.istartsWith("interested")
+        .version.greaterOrEqualTo(1L)
+        .findList();
+  }
 }

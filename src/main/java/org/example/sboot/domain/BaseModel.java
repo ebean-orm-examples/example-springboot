@@ -1,11 +1,10 @@
 package org.example.sboot.domain;
 
-
-import io.ebean.Model;
-import io.ebean.annotation.WhenCreated;
-import io.ebean.annotation.WhenModified;
-import io.ebean.annotation.WhoCreated;
-import io.ebean.annotation.WhoModified;
+import com.avaje.ebean.Model;
+import com.avaje.ebean.annotation.WhenCreated;
+import com.avaje.ebean.annotation.WhenModified;
+import com.avaje.ebean.annotation.WhoCreated;
+import com.avaje.ebean.annotation.WhoModified;
 
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;

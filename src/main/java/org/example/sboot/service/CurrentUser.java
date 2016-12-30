@@ -1,6 +1,6 @@
 package org.example.sboot.service;
 
-import io.ebean.config.CurrentUserProvider;
+import com.avaje.ebean.config.CurrentUserProvider;
 import org.springframework.stereotype.Component;
 
 /**

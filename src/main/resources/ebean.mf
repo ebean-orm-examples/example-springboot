@@ -1,0 +1,3 @@
+entity-packages: org.example.sboot.domain
+transactional-packages: org.example.sboot
+querybean-packages: none

@@ -11,7 +11,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.4.0.RELEASE</version>
+    <version>1.5.6.RELEASE</version>
   </parent>
 
   <properties>
@@ -31,29 +31,29 @@
     <!--</dependency>-->
 
     <dependency>
-      <groupId>org.avaje.ebean</groupId>
+      <groupId>io.ebean</groupId>
       <artifactId>ebean</artifactId>
-      <version>8.1.1</version>
+      <version>10.4.2</version>
     </dependency>
 
     <dependency>
-      <groupId>org.avaje.ebean</groupId>
+      <groupId>io.ebean</groupId>
       <artifactId>querybean-generator</artifactId>
-      <version>8.1.1</version>
+      <version>10.2.1</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
-      <groupId>org.avaje.ebean</groupId>
+      <groupId>io.ebean</groupId>
       <artifactId>ebean-querybean</artifactId>
-      <version>8.1.1</version>
+      <version>10.3.1</version>
     </dependency>
 
-    <dependency>
-      <groupId>org.avaje.ebean</groupId>
-      <artifactId>ebean-spring</artifactId>
-      <version>7.1.2</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>io.ebean</groupId>-->
+      <!--<artifactId>ebean-spring</artifactId>-->
+      <!--<version>LATEST</version>-->
+    <!--</dependency>-->
 
     <dependency>
       <groupId>com.h2database</groupId>
@@ -61,13 +61,13 @@
       <scope>runtime</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.avaje.composite</groupId>
-      <artifactId>avaje-composite-testing-ebean</artifactId>
-      <version>4.1</version>
-      <type>pom</type>
-      <scope>test</scope>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.avaje.composite</groupId>-->
+      <!--<artifactId>avaje-composite-testing-ebean</artifactId>-->
+      <!--<version>4.1</version>-->
+      <!--<type>pom</type>-->
+      <!--<scope>test</scope>-->
+    <!--</dependency>-->
 
     <dependency>
       <groupId>org.springframework</groupId>
@@ -98,7 +98,7 @@
         <configuration>
           <tiles>
             <tile>org.avaje.tile:java-compile:1.1</tile>
-            <tile>org.avaje.ebean.tile:enhancement:1.1</tile>
+            <tile>io.ebean.tile:enhancement:2.9</tile>
           </tiles>
         </configuration>
       </plugin>

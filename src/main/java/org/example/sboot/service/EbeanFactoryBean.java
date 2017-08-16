@@ -6,10 +6,10 @@ import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.avaje.ebean.EbeanServer;
-import com.avaje.ebean.EbeanServerFactory;
-import com.avaje.ebean.config.ServerConfig;
-import com.avaje.ebean.springsupport.txn.SpringAwareJdbcTransactionManager;
+import io.ebean.EbeanServer;
+import io.ebean.EbeanServerFactory;
+import io.ebean.config.ServerConfig;
+//import io.ebean.springsupport.txn.SpringAwareJdbcTransactionManager;
 
 /**
  * Spring factory for creating the EbeanServer singleton.

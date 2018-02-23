@@ -1,14 +1,11 @@
 package org.example.sboot.service;
 
-import javax.sql.DataSource;
-
-import org.springframework.beans.factory.FactoryBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import io.ebean.EbeanServer;
 import io.ebean.EbeanServerFactory;
 import io.ebean.config.ServerConfig;
+import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 //import io.ebean.springsupport.txn.SpringAwareJdbcTransactionManager;
 
 /**
@@ -35,11 +32,7 @@ public class EbeanFactoryBean implements FactoryBean<EbeanServer> {
 //    config.setExternalTransactionManager(new SpringAwareJdbcTransactionManager());
 
     config.loadFromProperties();
-    
-    // set as default and register so that Model can be
-    // used if desired for save() and update() etc
-    config.setDefaultServer(true);
-    config.setRegister(true);
+    config.loadTestProperties();
 
     return EbeanServerFactory.create(config);
   }

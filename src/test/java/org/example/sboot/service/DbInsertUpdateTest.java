@@ -2,6 +2,7 @@ package org.example.sboot.service;
 
 import io.ebean.EbeanServer;
 import org.example.sboot.domain.Content;
+import org.example.sboot.domain.repo.ContentRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +19,42 @@ public class DbInsertUpdateTest {
   @Autowired
   EbeanServer server;
 
+  @Autowired
+  ContentRepository contentRepository;
+
   @Test
-  public void testInsertUpdate() throws Exception {
+  public void testInsertUpdate() {
 
     assertNotNull(server);
 
-    Content content = new Content();
-    content.setName("foo");
-    server.save(content);
+    // -------------------------------------------------------------
+    // Model and Finder style ...
 
-    content.setName("moo");
-    content.save();
+    Content foo = new Content();
+    foo.setName("foo");
+    foo.save();
+    //server.save(foo);
+
+    foo.setName("moo");
+    foo.save();
+
+    Content fetchFoo = Content.find.byId(foo.getId());
+    fetchFoo.setName("boo");
+    fetchFoo.save();
+
+
+    // -------------------------------------------------------------
+    // Repository style ...
+
+    Content baz = new Content();
+    baz.setName("baz");
+
+    contentRepository.save(baz);
+
+    Content fetchBaz = contentRepository.byId(baz.getId());
+
+    fetchBaz.setName("bazza");
+    contentRepository.save(fetchBaz);
 
 //    new QContent()
 //        .name.istartsWith("interested")

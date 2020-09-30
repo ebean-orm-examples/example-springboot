@@ -33,7 +33,9 @@ public class EbeanFactoryBean implements FactoryBean<EbeanServer> {
 
     config.loadFromProperties();
     config.loadTestProperties();
-
+    config.setDdlGenerate(true);
+    config.setDdlRun(true);
+    
     return EbeanServerFactory.create(config);
   }
 

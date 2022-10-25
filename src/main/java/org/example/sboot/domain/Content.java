@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="exa_content")
+@Table(name="content")
 public class Content extends BaseModel {
 
   public static final ContentFinder find = new ContentFinder();

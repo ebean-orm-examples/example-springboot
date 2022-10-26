@@ -11,11 +11,12 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.10.RELEASE</version>
+    <version>2.7.5</version>
+    <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
   <properties>
-    <java.version>1.8</java.version>
+    <java.version>17</java.version>
   </properties>
 
   <dependencies>
@@ -28,31 +29,6 @@
     <!--<dependency>-->
       <!--<groupId>org.springframework.boot</groupId>-->
       <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
-    <!--</dependency>-->
-
-    <dependency>
-      <groupId>io.ebean</groupId>
-      <artifactId>ebean</artifactId>
-      <version>11.11.1</version>
-    </dependency>
-
-    <!--<dependency>-->
-      <!--<groupId>io.ebean</groupId>-->
-      <!--<artifactId>querybean-generator</artifactId>-->
-      <!--<version>11.1.1</version>-->
-      <!--<scope>provided</scope>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-      <!--<groupId>io.ebean</groupId>-->
-      <!--<artifactId>ebean-querybean</artifactId>-->
-      <!--<version>11.1.1</version>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-      <!--<groupId>io.ebean</groupId>-->
-      <!--<artifactId>ebean-spring</artifactId>-->
-      <!--<version>LATEST</version>-->
     <!--</dependency>-->
 
     <dependency>
@@ -81,6 +57,37 @@
       <scope>test</scope>
     </dependency>
 
+    <!--		Ebean Dependencies -->
+    <dependency>
+      <groupId>io.ebean</groupId>
+      <artifactId>ebean</artifactId>
+      <version>13.10.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.ebean</groupId>
+      <artifactId>querybean-generator</artifactId>
+      <version>13.10.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.ebean</groupId>
+      <artifactId>ebean-querybean</artifactId>
+      <version>13.10.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.ebean</groupId>
+      <artifactId>ebean-ddl-generator</artifactId>
+      <version>13.10.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>

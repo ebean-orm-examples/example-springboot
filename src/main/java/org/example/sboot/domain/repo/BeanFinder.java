@@ -1,19 +1,19 @@
 package org.example.sboot.domain.repo;
 
-import io.ebean.EbeanServer;
+import io.ebean.Database;
 import io.ebean.Finder;
 
 public abstract class BeanFinder<I,T> extends Finder<I,T> {
 
-	protected final EbeanServer server;
+	protected final Database database;
 
-	public BeanFinder(Class<T> type, EbeanServer server) {
+	public BeanFinder(Class<T> type, Database server) {
 		super(type);
-		this.server = server;
+		this.database = server;
 	}
 
 	@Override
-	public EbeanServer db() {
-		return server;
+	public Database db() {
+		return database;
 	}
 }

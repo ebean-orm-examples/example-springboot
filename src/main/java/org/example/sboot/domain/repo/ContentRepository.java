@@ -1,6 +1,6 @@
 package org.example.sboot.domain.repo;
 
-import io.ebean.EbeanServer;
+import io.ebean.Database;
 import org.example.sboot.domain.Content;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 public class ContentRepository extends BeanRepository<Long,Content> {
 
 	@Autowired
-	public ContentRepository(EbeanServer server) {
-		super(Content.class, server);
+	public ContentRepository(Database database) {
+		super(Content.class, database);
 	}
 
 }

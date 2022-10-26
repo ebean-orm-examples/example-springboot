@@ -1,6 +1,6 @@
 package org.example.sboot.service;
 
-import io.ebean.EbeanServer;
+import io.ebean.Database;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +14,11 @@ import static org.junit.Assert.assertNotNull;
 public class WiringTest {
 
   @Autowired
-  EbeanServer server;
+  Database database;
 
   @Test
   public void testHello() throws Exception {
 
-    assertNotNull(server);
+    assertNotNull(database);
   }
 }

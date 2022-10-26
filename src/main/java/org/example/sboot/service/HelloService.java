@@ -1,6 +1,6 @@
 package org.example.sboot.service;
 
-import io.ebean.EbeanServer;
+import io.ebean.Database;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class HelloService {
 
   @Autowired
-  EbeanServer server;
+  Database database;
 
   public String hello() {
     return "Hello Service";

@@ -3,12 +3,9 @@ package org.example.sboot.service;
 import io.ebean.Database;
 import io.ebean.DatabaseFactory;
 import io.ebean.config.DatabaseConfig;
-import io.ebean.datasource.DataSourceConfig;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-//import io.ebean.springsupport.txn.SpringAwareJdbcTransactionManager;
 
 /**
  * Spring factory for creating the EbeanServer singleton.
@@ -24,10 +21,9 @@ public class EbeanFactoryBean implements FactoryBean<Database> {
   
   @Override
   public Database getObject() throws Exception {
-    DataSourceConfig dataSourceConfig = new DataSourceConfig();
+
     DatabaseConfig config = new DatabaseConfig();
     config.setName("db");
-    config.setDataSourceConfig(dataSourceConfig);
     config.setCurrentUserProvider(currentUser);
 
 //    // set the spring's datasource and transaction manager.

@@ -9,22 +9,22 @@ import io.ebean.annotation.WhoModified;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
-import java.sql.Timestamp;
+import java.time.Instant;
 
 @MappedSuperclass
 public class BaseModel extends Model {
 
   @Id
-  Long id;
+  long id;
 
   @Version
-  Long version;
+  long version;
 
   @WhenCreated
-  Timestamp whenCreated;
+  Instant whenCreated;
 
   @WhenModified
-  Timestamp whenModified;
+  Instant whenModified;
 
   @WhoCreated
   String whoCreated;
@@ -32,35 +32,35 @@ public class BaseModel extends Model {
   @WhoModified
   String whoModified;
 
-  public Long getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(long id) {
     this.id = id;
   }
 
-  public Long getVersion() {
+  public long getVersion() {
     return version;
   }
 
-  public void setVersion(Long version) {
+  public void setVersion(long version) {
     this.version = version;
   }
 
-  public Timestamp getWhenCreated() {
+  public Instant getWhenCreated() {
     return whenCreated;
   }
 
-  public void setWhenCreated(Timestamp whenCreated) {
+  public void setWhenCreated(Instant whenCreated) {
     this.whenCreated = whenCreated;
   }
 
-  public Timestamp getWhenModified() {
+  public Instant getWhenModified() {
     return whenModified;
   }
 
-  public void setWhenModified(Timestamp whenModified) {
+  public void setWhenModified(Instant whenModified) {
     this.whenModified = whenModified;
   }
 

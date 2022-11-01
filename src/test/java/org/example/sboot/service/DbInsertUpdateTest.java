@@ -26,8 +26,7 @@ class DbInsertUpdateTest {
     // -------------------------------------------------------------
     // Model and Finder style ...
 
-    Content foo = new Content();
-    foo.setName("foo");
+    Content foo = new Content("foo");
     foo.save();
     //server.save(foo);
 
@@ -42,9 +41,7 @@ class DbInsertUpdateTest {
     // -------------------------------------------------------------
     // Repository style ...
 
-    Content baz = new Content();
-    baz.setName("baz");
-
+    Content baz = new Content("baz");
     contentRepository.save(baz);
 
     Content fetchBaz = contentRepository.findById(baz.getId());

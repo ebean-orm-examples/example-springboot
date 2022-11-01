@@ -1,10 +1,12 @@
 package org.example.sboot.service;
 
-import io.ebean.EbeanServer;
-import io.ebean.EbeanServerFactory;
-import io.ebean.config.ServerConfig;
+import io.ebean.Database;
+import io.ebean.DatabaseFactory;
+import io.ebean.config.DatabaseConfig;
+import io.ebean.datasource.DataSourceConfig;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 //import io.ebean.springsupport.txn.SpringAwareJdbcTransactionManager;
 
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Component;
  * Spring factory for creating the EbeanServer singleton.
  */
 @Component
-public class EbeanFactoryBean implements FactoryBean<EbeanServer> {
+public class EbeanFactoryBean implements FactoryBean<Database> {
 
   @Autowired
   CurrentUser currentUser;
@@ -21,10 +23,11 @@ public class EbeanFactoryBean implements FactoryBean<EbeanServer> {
 //  DataSource dataSource;
   
   @Override
-  public EbeanServer getObject() throws Exception {
-
-    ServerConfig config = new ServerConfig();
+  public Database getObject() throws Exception {
+    DataSourceConfig dataSourceConfig = new DataSourceConfig();
+    DatabaseConfig config = new DatabaseConfig();
     config.setName("db");
+    config.setDataSourceConfig(dataSourceConfig);
     config.setCurrentUserProvider(currentUser);
 
 //    // set the spring's datasource and transaction manager.
@@ -32,14 +35,13 @@ public class EbeanFactoryBean implements FactoryBean<EbeanServer> {
 //    config.setExternalTransactionManager(new SpringAwareJdbcTransactionManager());
 
     config.loadFromProperties();
-    config.loadTestProperties();
 
-    return EbeanServerFactory.create(config);
+    return DatabaseFactory.create(config);
   }
 
   @Override
   public Class<?> getObjectType() {
-    return EbeanServer.class;
+    return Database.class;
   }
 
   @Override

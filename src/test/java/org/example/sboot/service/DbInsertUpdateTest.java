@@ -1,8 +1,8 @@
 package org.example.sboot.service;
 
-import io.ebean.EbeanServer;
 import org.example.sboot.domain.Content;
 import org.example.sboot.domain.repo.ContentRepository;
+import org.h2.engine.Database;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNotNull;
 public class DbInsertUpdateTest {
 
   @Autowired
-  EbeanServer server;
+  Database database;
 
   @Autowired
   ContentRepository contentRepository;
@@ -25,7 +25,7 @@ public class DbInsertUpdateTest {
   @Test
   public void testInsertUpdate() {
 
-    assertNotNull(server);
+    assertNotNull(database);
 
     // -------------------------------------------------------------
     // Model and Finder style ...

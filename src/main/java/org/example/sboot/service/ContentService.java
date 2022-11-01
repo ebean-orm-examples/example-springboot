@@ -1,6 +1,6 @@
 package org.example.sboot.service;
 
-import io.ebean.EbeanServer;
+import io.ebean.Database;
 import io.ebean.annotation.Transactional;
 import org.example.sboot.domain.Content;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +13,15 @@ import java.util.List;
 public class ContentService {
 
     @Autowired
-    EbeanServer server;
+    Database database;
 
     public List<Content> getContent() {
-        return server.find(Content.class).findList();
+        return database.find(Content.class).findList();
     }
 
     @Transactional
     public Content save(Content content) {
-        server.save(content);
+        database.save(content);
         if (content.getName().equals("rollback")) {
             throw new RuntimeException("boooom!!");
         }
